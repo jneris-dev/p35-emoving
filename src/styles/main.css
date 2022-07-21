@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    @apply h-full bg-zinc-100 text-main-500 overflow-y-scroll overflow-x-hidden w-full
+}
+
+main {
+    @apply before:bg-main-500 before:content-[''] before:h-[264px] before:inset-0 before:absolute before:w-full
+}

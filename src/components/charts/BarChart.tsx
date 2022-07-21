@@ -1,0 +1,34 @@
+import { ApexOptions } from "apexcharts";
+import ReactApexChart from "react-apexcharts";
+
+const options: ApexOptions = {
+    chart: {
+        id: "basic-bar",
+        type: "bar",
+    },
+    xaxis: {
+        categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998]
+    }
+};
+
+const series = [
+    {
+        name: "series-1",
+        data: [30, 40, 45, 50, 49, 60, 70, 91]
+    },
+    {
+        name: "series-2",
+        data: [50, 13, 78, 45, 30, 46, 78, 44]
+    }
+]
+
+export function BarChart() {
+    return (
+        <ReactApexChart
+            options={options}
+            series={series}
+            type="bar"
+            width="100%"
+        />
+    );
+}
