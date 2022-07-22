@@ -18,9 +18,9 @@ export function Login() {
     }
 
     return (
-        <main className="w-full h-screen flex flex-row items-center relative">
-            <div className="w-1/2 h-full flex items-center justify-center">
-                <div className="w-full max-w-[500px] py-5 px-3">
+        <main className="w-full lg:h-screen h-auto flex lg:flex-row flex-col items-center relative">
+            <div className="lg:w-1/2 w-full h-full flex items-center justify-center lg:order-1 order-2">
+                <div className="w-full max-w-[500px] py-5 px-4">
                     <img
                         src="https://e-moving.com.br/wp-content/uploads/2021/01/logo-e-moving-escuro.svg"
                         alt="Logo E-moving"
@@ -74,7 +74,7 @@ export function Login() {
                     </a>
                 </div>
             </div>
-            <div className="w-1/2 h-full overflow-hidden">
+            <div className="lg:w-1/2 w-full lg:h-full h-[250px] overflow-hidden lg:order-2 order-1">
                 <img
                     className="w-full h-full object-cover"
                     src="https://bike.e-moving.com.br/public/assets/images/bg-app.jpg"
