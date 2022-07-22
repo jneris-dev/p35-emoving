@@ -1,10 +1,13 @@
 import { BellSimple, EnvelopeSimpleOpen, List, Moon, Sun } from "phosphor-react";
 
 import { Card } from "../components/Card";
+import { Footer } from "../components/Footer";
 
 import { BarChart } from "../components/charts/BarChart";
 import { LineChart } from "../components/charts/LineChart";
 import { Numeric } from "../components/Numeric";
+import { useAuth } from "../hooks/useAuth";
+
 import { AreaChart } from "../components/charts/AreaChart";
 import { DonutChart } from "../components/charts/DonutChart";
 import { PieChart } from "../components/charts/PieChart";
@@ -17,6 +20,8 @@ interface DashboardProps {
 }
 
 export function Dashboard(props: DashboardProps) {
+    const { user } = useAuth();
+
     return (
         <div className={`flex flex-col min-h-screen w-full min-w-0 relative`}>
             <header className="flex flex-wrap justify-between text-white h-[65px] items-center px-5">
@@ -37,7 +42,7 @@ export function Dashboard(props: DashboardProps) {
             <section className="flex-1 mt-12 lg:px-6 px-3">
                 <div className="mb-12 relative text-white">
                     <h1 className="text-3xl font-medium">
-                        Welcome back, João!
+                        Welcome back, {user?.username}!
                     </h1>
 
                     <nav className="flex mt-3" aria-label="Breadcrumb">
@@ -116,6 +121,8 @@ export function Dashboard(props: DashboardProps) {
                     </div>
                 </div>
             </section>
+
+            <Footer />
         </div>
     );
 }

@@ -1,6 +1,9 @@
 import { Md5 } from "md5-typescript";
 import { ChartLine, Gauge, Gear, Lifebuoy, SignOut, Users } from "phosphor-react";
+import { useEffect } from "react";
 import { isTablet } from "react-device-detect";
+
+import { useAuth } from "../hooks/useAuth";
 
 interface SidebarProps {
     stateMenu: boolean;
@@ -8,10 +11,13 @@ interface SidebarProps {
 }
 
 export function Sidebar(props: SidebarProps) {
+    const { user } = useAuth();
+    const convertEmailUser = Md5.init(user?.email || 'email@email.com');
 
-    const emailUser = "joao.n@e-moving.com.br";
-
-    const convertEmailUser = Md5.init(emailUser);
+    function logOut() {
+        localStorage.removeItem("userToken");
+        window.location.reload();
+    }
 
     return (
         <>
@@ -29,13 +35,15 @@ export function Sidebar(props: SidebarProps) {
                 </a>
                 <div className="flex bg-white flex-col h-full lg:min-h-full min-h-screen py-3 drop-shadow-md">
                     <div className="text-center p-6">
-                        <img
-                            src={`https://gravatar.com/avatar/${convertEmailUser}?s=${72}&d=identicon&r=x`}
-                            className="rounded-full block mx-auto mb-2"
-                            alt=""
-                        />
-                        <p className="font-bold">João Neris</p>
-                        <small className="text-zinc-500">{emailUser}</small>
+                        {convertEmailUser &&
+                            <img
+                                src={`https://gravatar.com/avatar/${convertEmailUser}?s=${72}&d=identicon&r=x`}
+                                className="rounded-full block mx-auto mb-2"
+                                alt=""
+                            />
+                        }
+                        <p className="font-bold">{user?.username}</p>
+                        <small className="text-zinc-500">{user?.email}</small>
                     </div>
                     <ul className="flex flex-col py-5 px-3 gap-y-4 text-zinc-600">
                         <li className="flex gap-2 cursor-pointer flex-row p-3 rounded-sm bg-zinc-100 text-zinc-900">
@@ -68,7 +76,10 @@ export function Sidebar(props: SidebarProps) {
                                 Suporte
                             </span>
                         </li>
-                        <li className="flex gap-2 cursor-pointer flex-row p-3 rounded-sm hover:bg-zinc-100 hover:text-zinc-900">
+                        <li
+                            onClick={() => logOut()}
+                            className="flex gap-2 cursor-pointer flex-row p-3 rounded-sm hover:bg-zinc-100 hover:text-zinc-900"
+                        >
                             <SignOut size={24} weight="fill" className="text-main-500" />
                             <span>
                                 Sair

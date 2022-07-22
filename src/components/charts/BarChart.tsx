@@ -5,6 +5,13 @@ const options: ApexOptions = {
     chart: {
         id: "basic-bar",
         type: "bar",
+        events: {
+            beforeMount: function () {
+                return (
+                    <p>Loading...</p>
+                )
+            }
+        }
     },
     xaxis: {
         categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998]
