@@ -17,7 +17,7 @@ export function Home() {
     const { user } = useAuth();
     const params = useParams<SlugParams>();
 
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [optionsTheme, setOptionsTheme] = useState('light');
     const [openMenu, setOpenMenu] = useState(
         isTablet || isMobile ? false : true
@@ -32,15 +32,14 @@ export function Home() {
     }
 
     useEffect(() => {
-        if (!user)
-            setTimeout(() => {
-                setLoading(true);
-            }, 1000);
+        if (user) {
+            setTimeout(() => setLoading(false), 1000)
+        }
     }, [user]);
 
     return (
         <>
-            {loading ?
+            {!loading ?
                 <main className="home-main w-full flex items-stretch relative overflow-hidden">
                     <Sidebar stateMenu={openMenu} switchMenu={setOpenMenu} paramsSlug={params.slug} />
                     {params.slug === 'cliente' || params.slug === undefined ?
