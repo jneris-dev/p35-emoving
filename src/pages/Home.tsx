@@ -1,13 +1,22 @@
 import { useEffect, useState } from "react";
 import { isMobile, isTablet } from 'react-device-detect';
+import { useParams } from "react-router-dom";
 import { Loading } from "../components/Loading";
 
 import { Sidebar } from "../components/Sidebar"
 import { useAuth } from "../hooks/useAuth";
-import { Dashboard } from "../pages/Dashboard"
+
+import { Cliente } from "./Cliente";
+import { Comercial } from "./Comercial";
+
+type SlugParams = {
+    slug: string;
+}
 
 export function Home() {
     const { user } = useAuth();
+    const params = useParams<SlugParams>();
+
     const [loading, setLoading] = useState(false);
     const [optionsTheme, setOptionsTheme] = useState('light');
     const [openMenu, setOpenMenu] = useState(
@@ -32,8 +41,12 @@ export function Home() {
         <>
             {loading ?
                 <main className="home-main w-full flex items-stretch relative overflow-hidden">
-                    <Sidebar stateMenu={openMenu} switchMenu={setOpenMenu} />
-                    <Dashboard stateMenu={openMenu} switchMenu={setOpenMenu} switchTheme={swipeTheme} theme={optionsTheme} />
+                    <Sidebar stateMenu={openMenu} switchMenu={setOpenMenu} paramsSlug={params.slug} />
+                    {params.slug === 'cliente' ?
+                        <Cliente stateMenu={openMenu} switchMenu={setOpenMenu} switchTheme={swipeTheme} theme={optionsTheme} />
+                        :
+                        <Comercial stateMenu={openMenu} switchMenu={setOpenMenu} switchTheme={swipeTheme} theme={optionsTheme} />
+                    }
                 </main>
                 :
                 <Loading />

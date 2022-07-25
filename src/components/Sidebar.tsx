@@ -1,17 +1,22 @@
+import { useState } from "react";
+
 import { Md5 } from "md5-typescript";
-import { ChartLine, Gauge, Gear, Lifebuoy, SignOut, Users } from "phosphor-react";
-import { useEffect } from "react";
+import { ArrowRight, CaretDown, CaretRight, ChartLine, Gauge, Gear, Lifebuoy, SignOut, Users } from "phosphor-react";
 import { isTablet } from "react-device-detect";
+import { Link } from "react-router-dom";
 
 import { useAuth } from "../hooks/useAuth";
 
 interface SidebarProps {
     stateMenu: boolean;
     switchMenu: (value: boolean) => void;
+    paramsSlug: string | undefined;
 }
 
 export function Sidebar(props: SidebarProps) {
     const { user } = useAuth();
+
+    const [openDropdown, setOpenDropdown] = useState(false);
     const convertEmailUser = Md5.init(user?.email || 'email@email.com');
 
     function logOut() {
@@ -45,12 +50,59 @@ export function Sidebar(props: SidebarProps) {
                         <p className="font-bold">{user?.username}</p>
                         <small className="text-zinc-500">{user?.email}</small>
                     </div>
-                    <ul className="flex flex-col py-5 px-3 gap-y-4 text-zinc-600">
-                        <li className="flex gap-2 cursor-pointer flex-row p-3 rounded-sm bg-zinc-100 text-zinc-900">
-                            <Gauge size={24} weight="fill" className="text-main-500" />
-                            <span>
-                                Dashboard
-                            </span>
+                    <ul className="flex flex-col py-5 px-3 gap-y-4 text-zinc-600 menu-sidebar">
+                        <li className="w-full">
+                            <button
+                                type="button"
+                                className={`w-full flex gap-2 cursor-pointer flex-row p-3 rounded-sm items-center`}
+                                aria-controls="dropdown-dashboard"
+                                data-collapse-toggle="dropdown-dashboard"
+                                onClick={() => setOpenDropdown(!openDropdown)}
+                            >
+                                <Gauge size={24} weight="fill" className="text-main-500" />
+                                <span className="mr-auto">
+                                    Dashboard
+                                </span>
+                                <span>
+                                    {openDropdown ?
+                                        <CaretDown size={18} weight="bold" />
+                                        :
+                                        <CaretRight size={18} weight="bold" />
+                                    }
+                                </span>
+                            </button>
+                            <ul id="dropdown-dashboard" className={`py-2 space-y-2 pl-3 ${!openDropdown && 'hidden'}`}>
+                                <li>
+                                    <Link
+                                        to="/cliente"
+                                        className={`
+                                            w-full flex gap-2 cursor-pointer flex-row p-3 rounded-sm items-center
+                                            ${props.paramsSlug === 'cliente' && 'active'}
+                                        `}
+                                    >
+                                        <ArrowRight size={12} weight="regular" />
+                                        Cliente
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link
+                                        to="/"
+                                        className={`
+                                            w-full flex gap-2 cursor-pointer flex-row p-3 rounded-sm items-center
+                                            ${props.paramsSlug === 'comercial' && 'active'}
+                                        `}
+                                    >
+                                        <ArrowRight size={12} weight="regular" />
+                                        Comercial
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="" className="w-full flex gap-2 cursor-pointer flex-row p-3 rounded-sm items-center">
+                                        <ArrowRight size={12} weight="regular" />
+                                        Financeiro
+                                    </Link>
+                                </li>
+                            </ul>
                         </li>
                         <li className="flex gap-2 cursor-pointer flex-row p-3 rounded-sm hover:bg-zinc-100 hover:text-zinc-900">
                             <Users size={24} weight="fill" className="text-main-500" />

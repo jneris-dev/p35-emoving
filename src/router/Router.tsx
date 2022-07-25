@@ -14,7 +14,7 @@ export function Router() {
             <Route path="/" element={
                 <>
                     {isLogged !== null ?
-                        <Home />
+                        <Navigate replace to="/cliente" />
                         :
                         <Navigate replace to="/login" />
                     }
@@ -29,6 +29,7 @@ export function Router() {
                     }
                 </>
             } />
+            <Route path="/:slug" element={<Home />} />
         </Routes>
     );
 }

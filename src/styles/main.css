@@ -9,3 +9,8 @@ body {
 main.home-main {
     @apply before:bg-main-500 before:content-[''] before:h-[264px] before:inset-0 before:absolute before:w-full
 }
+
+nav ul.menu-sidebar .active,
+nav ul.menu-sidebar li a:hover {
+    @apply bg-zinc-100 text-zinc-900;
+}
