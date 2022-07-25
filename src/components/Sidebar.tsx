@@ -21,6 +21,7 @@ export function Sidebar(props: SidebarProps) {
 
     function logOut() {
         localStorage.removeItem("userToken");
+
         window.location.reload();
     }
 
@@ -86,7 +87,7 @@ export function Sidebar(props: SidebarProps) {
                                 </li>
                                 <li>
                                     <Link
-                                        to="/"
+                                        to="/comercial"
                                         className={`
                                             w-full flex gap-2 cursor-pointer flex-row p-3 rounded-sm items-center
                                             ${props.paramsSlug === 'comercial' && 'active'}

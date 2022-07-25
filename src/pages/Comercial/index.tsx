@@ -1,15 +1,12 @@
+import { useAuth } from "../../hooks/useAuth";
+
 import { Header } from "../../components/Header";
 import { Card } from "../../components/Card";
 import { Footer } from "../../components/Footer";
 
-import { BarChart } from "../../components/charts/BarChart";
-import { LineChart } from "../../components/charts/LineChart";
-import { Numeric } from "../../components/Numeric";
-import { useAuth } from "../../hooks/useAuth";
-
-import { AreaChart } from "../../components/charts/AreaChart";
-import { DonutChart } from "../../components/charts/DonutChart";
-import { PieChart } from "../../components/charts/PieChart";
+import { Marketing } from "./charts/Marketing";
+import { Reunioes } from "./charts/Reunioes";
+import { Contratos } from "./charts/Contratos";
 
 interface ComercialProps {
     stateMenu: boolean;
@@ -52,53 +49,24 @@ export function Comercial(props: ComercialProps) {
                     </nav>
                 </div>
 
-                <div className="flex md:flex-row flex-col gap-5 items-stretch mb-10 justify-center">
-                    <Card width={["flex-1", "w-full"]}>
-                        <Numeric
-                            label="Tempo de Atendimento"
-                            data="10min"
-                            rate="-2.5%"
-                            description="Tempo respondemos o chamado"
-                            status="down"
-                        />
+                <div className="flex lg:flex-row flex-col gap-5 items-stretch mb-10">
+                    <Card width={["lg:w-1/2", "w-full"]}>
+                        <Marketing theme={props.theme} />
                     </Card>
-                    <Card width={["flex-1", "w-full"]}>
-                        <Numeric
-                            label="Tempo de Resolução"
-                            data="25min"
-                            rate="-3.85%"
-                            description="Tempo resolvemos o problema do chamado (ou fechamos)"
-                            status="up"
-                        />
+                    <Card width={["lg:w-1/2", "w-full"]}>
+                        <Reunioes theme={props.theme} />
                     </Card>
                 </div>
 
                 <div className="flex lg:flex-row flex-col gap-5 items-stretch mb-10">
                     <Card width={["lg:w-1/2", "w-full"]}>
-                        <BarChart />
+                        <Contratos theme={props.theme} />
                     </Card>
-                    <Card width={["lg:w-1/2", "w-full"]}>
-                        <LineChart />
+                    <Card width={["lg:w-1/2", "w-full", "invisible"]}>
+
                     </Card>
                 </div>
 
-                <div className="flex lg:flex-row flex-col gap-5 items-stretch mb-10">
-                    <Card
-                        width={["lg:w-2/3", "w-full"]}
-                        label="Lorem ipsum dolor sit amet."
-                        description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, possimus!"
-                    >
-                        <AreaChart />
-                    </Card>
-                    <div className="lg:w-1/3 w-full flex lg:flex-col md:flex-row flex-col gap-5 h-auto">
-                        <Card width={["h-1/2", "lg:w-full", "md:w-1/2", "w-full", "h-full"]}>
-                            <DonutChart />
-                        </Card>
-                        <Card width={["h-1/2", "lg:w-full", "md:w-1/2", "w-full", "h-full"]}>
-                            <PieChart />
-                        </Card>
-                    </div>
-                </div>
             </section>
 
             <Footer />
