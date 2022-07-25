@@ -22,7 +22,7 @@ export function Numeric(props: Props) {
                 }
                 {props.data}
             </strong>
-            <small className="font-medium text-zinc-500">
+            <small className="font-medium text-zinc-500 dark:tex-zinc-300">
                 <span className={`${props.status === 'down' ? 'text-teal-600' : 'text-red-500'}`}>
                     {props.rate}
                 </span> {props.description}

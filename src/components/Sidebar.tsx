@@ -30,7 +30,7 @@ export function Sidebar(props: SidebarProps) {
                 <a
                     href=""
                     title="E-moving P35"
-                    className="flex items-center justify-center decoration-none no-underline w-100 h-[65px] bg-main-500"
+                    className="flex items-center justify-center decoration-none no-underline w-100 h-[65px] bg-main-500 dark:bg-main-600"
                 >
                     <img
                         src="https://e-moving.com.br/wp-content/themes/e-moving/img/logo.svg"
@@ -38,7 +38,7 @@ export function Sidebar(props: SidebarProps) {
                         className="max-w-full w-[150px]"
                     />
                 </a>
-                <div className="flex bg-white flex-col h-full lg:min-h-full min-h-screen py-3 drop-shadow-md">
+                <div className="flex bg-white dark:bg-zinc-800 flex-col h-full lg:min-h-full min-h-screen py-3 drop-shadow-md">
                     <div className="text-center p-6">
                         {convertEmailUser &&
                             <img
@@ -47,10 +47,10 @@ export function Sidebar(props: SidebarProps) {
                                 alt=""
                             />
                         }
-                        <p className="font-bold">{user?.username}</p>
-                        <small className="text-zinc-500">{user?.email}</small>
+                        <p className="font-bold dark:text-main-200">{user?.username}</p>
+                        <small className="text-zinc-500 dark:text-zinc-300">{user?.email}</small>
                     </div>
-                    <ul className="flex flex-col py-5 px-3 gap-y-4 text-zinc-600 menu-sidebar">
+                    <ul className="flex flex-col py-5 px-3 gap-y-4 text-zinc-600 dark:text-zinc-300 menu-sidebar">
                         <li className="w-full">
                             <button
                                 type="button"
@@ -59,7 +59,7 @@ export function Sidebar(props: SidebarProps) {
                                 data-collapse-toggle="dropdown-dashboard"
                                 onClick={() => setOpenDropdown(!openDropdown)}
                             >
-                                <Gauge size={24} weight="fill" className="text-main-500" />
+                                <Gauge size={24} weight="fill" className="text-main-500 dark:text-main-200" />
                                 <span className="mr-auto">
                                     Dashboard
                                 </span>
@@ -105,25 +105,25 @@ export function Sidebar(props: SidebarProps) {
                             </ul>
                         </li>
                         <li className="flex gap-2 cursor-pointer flex-row p-3 rounded-sm hover:bg-zinc-100 hover:text-zinc-900">
-                            <Users size={24} weight="fill" className="text-main-500" />
+                            <Users size={24} weight="fill" className="text-main-500 dark:text-main-200" />
                             <span>
                                 Clientes
                             </span>
                         </li>
                         <li className="flex gap-2 cursor-pointer flex-row p-3 rounded-sm hover:bg-zinc-100 hover:text-zinc-900">
-                            <ChartLine size={24} weight="fill" className="text-main-500" />
+                            <ChartLine size={24} weight="fill" className="text-main-500 dark:text-main-200" />
                             <span>
                                 Relatórios
                             </span>
                         </li>
                         <li className="flex gap-2 cursor-pointer flex-row p-3 rounded-sm hover:bg-zinc-100 hover:text-zinc-900">
-                            <Gear size={24} weight="fill" className="text-main-500" />
+                            <Gear size={24} weight="fill" className="text-main-500 dark:text-main-200" />
                             <span>
                                 Configurações
                             </span>
                         </li>
                         <li className="flex gap-2 cursor-pointer flex-row p-3 rounded-sm hover:bg-zinc-100 hover:text-zinc-900">
-                            <Lifebuoy size={24} weight="fill" className="text-main-500" />
+                            <Lifebuoy size={24} weight="fill" className="text-main-500 dark:text-main-200" />
                             <span>
                                 Suporte
                             </span>
@@ -132,7 +132,7 @@ export function Sidebar(props: SidebarProps) {
                             onClick={() => logOut()}
                             className="flex gap-2 cursor-pointer flex-row p-3 rounded-sm hover:bg-zinc-100 hover:text-zinc-900"
                         >
-                            <SignOut size={24} weight="fill" className="text-main-500" />
+                            <SignOut size={24} weight="fill" className="text-main-500 dark:text-main-200" />
                             <span>
                                 Sair
                             </span>

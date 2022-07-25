@@ -1,7 +1,6 @@
-import { BellSimple, EnvelopeSimpleOpen, List, Moon, Sun } from "phosphor-react";
-
 import { useAuth } from "../../hooks/useAuth";
 
+import { Header } from "../../components/Header";
 import { Card } from "../../components/Card";
 import { Footer } from "../../components/Footer";
 import { Numeric } from "../../components/Numeric";
@@ -13,8 +12,7 @@ import { KMCO2 } from "./charts/KMCO2";
 interface ClienteProps {
     stateMenu: boolean;
     switchMenu: (value: boolean) => void;
-    switchTheme: () => void;
-    theme: string;
+    theme: boolean;
 }
 
 export function Cliente(props: ClienteProps) {
@@ -22,20 +20,10 @@ export function Cliente(props: ClienteProps) {
 
     return (
         <div className={`flex flex-col min-h-screen w-full min-w-0 relative`}>
-            <header className="flex flex-wrap justify-between text-white h-[65px] items-center px-5">
-                <List size={32} weight="fill" onClick={() => props.switchMenu(!props.stateMenu)} className="cursor-pointer" />
-                <div className="flex flex-row gap-4">
-                    <EnvelopeSimpleOpen size={24} weight="fill" />
-                    <BellSimple size={24} weight="fill" />
-                    <button onClick={props.switchTheme}>
-                        {props.theme === 'light' ?
-                            <Moon size={24} weight="fill" />
-                            :
-                            <Sun size={24} weight="fill" />
-                        }
-                    </button>
-                </div>
-            </header>
+            <Header
+                stateMenu={props.stateMenu}
+                switchMenu={props.switchMenu}
+            />
 
             <section className="flex-1 mt-12 lg:px-6 px-3">
                 <div className="mb-12 relative text-white">
@@ -89,14 +77,14 @@ export function Cliente(props: ClienteProps) {
                         label="NPS/Trimestre"
                         description="Avaliação trimestral - 0 a 10"
                     >
-                        <NPSTrimestre />
+                        <NPSTrimestre theme={props.theme} />
                     </Card>
                     <Card
                         width={["lg:w-1/2", "w-full"]}
                         label="Manutenções (R$)"
                         description="Quanto economizam com os serviços E-Moving vs Mercado tradicional"
                     >
-                        <Manutencoes />
+                        <Manutencoes theme={props.theme} />
                     </Card>
                 </div>
 
@@ -106,7 +94,7 @@ export function Cliente(props: ClienteProps) {
                         label="KM/CO2/mês"
                         description="Quantos km rodam e geram economia de CO2 na atmosfera"
                     >
-                        <KMCO2 />
+                        <KMCO2 theme={props.theme} />
                     </Card>
                     <Card
                         width={["lg:w-1/2", "w-full", "invisible"]}

@@ -1,5 +1,4 @@
-import { BellSimple, EnvelopeSimpleOpen, List, Moon, Sun } from "phosphor-react";
-
+import { Header } from "../../components/Header";
 import { Card } from "../../components/Card";
 import { Footer } from "../../components/Footer";
 
@@ -15,8 +14,7 @@ import { PieChart } from "../../components/charts/PieChart";
 interface ComercialProps {
     stateMenu: boolean;
     switchMenu: (value: boolean) => void;
-    switchTheme: () => void;
-    theme: string;
+    theme: boolean;
 }
 
 export function Comercial(props: ComercialProps) {
@@ -24,20 +22,10 @@ export function Comercial(props: ComercialProps) {
 
     return (
         <div className={`flex flex-col min-h-screen w-full min-w-0 relative`}>
-            <header className="flex flex-wrap justify-between text-white h-[65px] items-center px-5">
-                <List size={32} weight="fill" onClick={() => props.switchMenu(!props.stateMenu)} className="cursor-pointer" />
-                <div className="flex flex-row gap-4">
-                    <EnvelopeSimpleOpen size={24} weight="fill" />
-                    <BellSimple size={24} weight="fill" />
-                    <button onClick={props.switchTheme}>
-                        {props.theme === 'light' ?
-                            <Moon size={24} weight="fill" />
-                            :
-                            <Sun size={24} weight="fill" />
-                        }
-                    </button>
-                </div>
-            </header>
+            <Header
+                stateMenu={props.stateMenu}
+                switchMenu={props.switchMenu}
+            />
 
             <section className="flex-1 mt-12 lg:px-6 px-3">
                 <div className="mb-12 relative text-white">

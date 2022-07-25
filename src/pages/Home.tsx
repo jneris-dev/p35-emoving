@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { Loading } from "../components/Loading";
 
 import { Sidebar } from "../components/Sidebar"
+import { useTheme } from "../context/ThemeContext";
 import { useAuth } from "../hooks/useAuth";
 
 import { Cliente } from "./Cliente";
@@ -16,20 +17,12 @@ type SlugParams = {
 export function Home() {
     const { user } = useAuth();
     const params = useParams<SlugParams>();
+    const { theme } = useTheme();
 
     const [loading, setLoading] = useState(true);
-    const [optionsTheme, setOptionsTheme] = useState('light');
     const [openMenu, setOpenMenu] = useState(
         isTablet || isMobile ? false : true
     );
-
-    function swipeTheme() {
-        if (optionsTheme === 'light') {
-            setOptionsTheme('dark')
-        } else {
-            setOptionsTheme('light')
-        }
-    }
 
     useEffect(() => {
         if (user) {
@@ -43,9 +36,9 @@ export function Home() {
                 <main className="home-main w-full flex items-stretch relative overflow-hidden">
                     <Sidebar stateMenu={openMenu} switchMenu={setOpenMenu} paramsSlug={params.slug} />
                     {params.slug === 'cliente' || params.slug === undefined ?
-                        <Cliente stateMenu={openMenu} switchMenu={setOpenMenu} switchTheme={swipeTheme} theme={optionsTheme} />
+                        <Cliente stateMenu={openMenu} switchMenu={setOpenMenu} theme={theme} />
                         :
-                        <Comercial stateMenu={openMenu} switchMenu={setOpenMenu} switchTheme={swipeTheme} theme={optionsTheme} />
+                        <Comercial stateMenu={openMenu} switchMenu={setOpenMenu} theme={theme} />
                     }
                 </main>
                 :
