@@ -32,14 +32,10 @@ export function Home() {
     }
 
     useEffect(() => {
-        if (user) {
+        if (!user)
             setTimeout(() => {
                 setLoading(true);
             }, 1000);
-        }
-        else {
-            setLoading(false)
-        }
     }, [user]);
 
     return (
