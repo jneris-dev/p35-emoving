@@ -17,7 +17,7 @@ export function Sidebar(props: SidebarProps) {
     const { user } = useAuth();
 
     const [openDropdown, setOpenDropdown] = useState(false);
-    const convertEmailUser = Md5.init(user?.email || 'email@email.com');
+    const convertEmailUser = Md5.init(user?.email || 'user@email.com');
 
     function logOut() {
         localStorage.removeItem("userToken");
@@ -47,8 +47,8 @@ export function Sidebar(props: SidebarProps) {
                                 alt=""
                             />
                         }
-                        <p className="font-bold dark:text-main-200">{user?.username}</p>
-                        <small className="text-zinc-500 dark:text-zinc-300">{user?.email}</small>
+                        <p className="font-bold dark:text-main-200">{user?.username || "Usuário"}</p>
+                        <small className="text-zinc-500 dark:text-zinc-300">{user?.email || "user@email.com"}</small>
                     </div>
                     <ul className="flex flex-col py-5 px-3 gap-y-4 text-zinc-600 dark:text-zinc-300 menu-sidebar">
                         <li className="w-full">

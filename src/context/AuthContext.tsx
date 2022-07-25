@@ -54,10 +54,12 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
         function unsubscribe() {
             const userLoggedData = database.find((user) => user.token === isLogged);
 
-            setUser({
-                username: userLoggedData?.username,
-                email: userLoggedData?.email,
-            })
+            if (!user?.token !== undefined)
+                setUser({
+                    username: userLoggedData?.username,
+                    email: userLoggedData?.email,
+                    token: userLoggedData?.token
+                })
         }
 
         return () => {
@@ -76,7 +78,8 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
                 setUser({
                     username: userData.username,
                     email: userData.email,
-                    password: userData.password
+                    password: userData.password,
+                    token: userData.token,
                 })
                 localStorage.setItem('userToken', userData.token);
             }

@@ -30,7 +30,7 @@ export function Comercial(props: ComercialProps) {
             <section className="flex-1 mt-12 lg:px-6 px-3">
                 <div className="mb-12 relative text-white">
                     <h1 className="text-3xl font-medium">
-                        Welcome back, {user?.username}!
+                        Welcome back, {user?.username || "Usuário"}!
                     </h1>
 
                     <nav className="flex mt-3" aria-label="Breadcrumb">
