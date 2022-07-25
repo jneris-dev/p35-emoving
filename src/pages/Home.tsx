@@ -32,9 +32,14 @@ export function Home() {
     }
 
     useEffect(() => {
-        setTimeout(() => {
-            setLoading(true);
-        }, 1000);
+        if (user) {
+            setTimeout(() => {
+                setLoading(true);
+            }, 1000);
+        }
+        else {
+            setLoading(false)
+        }
     }, [user]);
 
     return (
@@ -42,7 +47,7 @@ export function Home() {
             {loading ?
                 <main className="home-main w-full flex items-stretch relative overflow-hidden">
                     <Sidebar stateMenu={openMenu} switchMenu={setOpenMenu} paramsSlug={params.slug} />
-                    {params.slug === 'cliente' ?
+                    {params.slug === 'cliente' || params.slug === undefined ?
                         <Cliente stateMenu={openMenu} switchMenu={setOpenMenu} switchTheme={swipeTheme} theme={optionsTheme} />
                         :
                         <Comercial stateMenu={openMenu} switchMenu={setOpenMenu} switchTheme={swipeTheme} theme={optionsTheme} />

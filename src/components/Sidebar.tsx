@@ -77,7 +77,7 @@ export function Sidebar(props: SidebarProps) {
                                         to="/cliente"
                                         className={`
                                             w-full flex gap-2 cursor-pointer flex-row p-3 rounded-sm items-center
-                                            ${props.paramsSlug === 'cliente' && 'active'}
+                                            ${props.paramsSlug === 'cliente' || props.paramsSlug === undefined && 'active'}
                                         `}
                                     >
                                         <ArrowRight size={12} weight="regular" />

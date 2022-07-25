@@ -14,7 +14,7 @@ export function Router() {
             <Route path="/" element={
                 <>
                     {isLogged !== null ?
-                        <Navigate replace to="/cliente" />
+                        <Home />
                         :
                         <Navigate replace to="/login" />
                     }
