@@ -29,7 +29,15 @@ export function Router() {
                     }
                 </>
             } />
-            <Route path="/:slug" element={<Home />} />
+            <Route path="/:slug" element={
+                <>
+                    {isLogged ?
+                        <Home />
+                        :
+                        <Navigate replace to="/login" />
+                    }
+                </>
+            } />
         </Routes>
     );
 }

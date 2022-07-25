@@ -64,7 +64,7 @@ export function Cliente(props: ClienteProps) {
                         <Numeric
                             label="Tempo de Resolução"
                             data="25min"
-                            rate="-3.85%"
+                            rate="+3.85%"
                             description="Tempo resolvemos o problema do chamado (ou fechamos)"
                             status="up"
                         />
