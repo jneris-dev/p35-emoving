@@ -19,13 +19,15 @@ export function Home() {
     const params = useParams<SlugParams>();
     const { theme } = useTheme();
 
+    console.log(user)
+
     const [loading, setLoading] = useState(true);
     const [openMenu, setOpenMenu] = useState(
         isTablet || isMobile ? false : true
     );
 
     useEffect(() => {
-        if (user) {
+        if (user !== undefined) {
             setTimeout(() => setLoading(false), 1000)
         }
     }, [user]);
