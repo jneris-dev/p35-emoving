@@ -28,7 +28,7 @@ export function Home() {
         if (user?.token !== undefined) {
             setTimeout(() => setLoading(false), 1000)
         }
-    }, [user]);
+    }, []);
 
     return (
         <>
