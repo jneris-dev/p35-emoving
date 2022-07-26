@@ -106,12 +106,6 @@ export function Sidebar(props: SidebarProps) {
                             </ul>
                         </li>
                         <li className="flex gap-2 cursor-pointer flex-row p-3 rounded-sm">
-                            <Users size={24} weight="fill" className="text-main-500 dark:text-main-200" />
-                            <span>
-                                Clientes
-                            </span>
-                        </li>
-                        <li className="flex gap-2 cursor-pointer flex-row p-3 rounded-sm">
                             <ChartLine size={24} weight="fill" className="text-main-500 dark:text-main-200" />
                             <span>
                                 Relatórios
