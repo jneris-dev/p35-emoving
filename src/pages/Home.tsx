@@ -30,20 +30,16 @@ export function Home() {
         }
     }, []);
 
+    console.log(user)
+
     return (
-        <>
-            {!loading ?
-                <main className="home-main w-full flex items-stretch relative overflow-hidden">
-                    <Sidebar stateMenu={openMenu} switchMenu={setOpenMenu} paramsSlug={params.slug} />
-                    {params.slug === 'cliente' || params.slug === undefined ?
-                        <Cliente stateMenu={openMenu} switchMenu={setOpenMenu} theme={theme} />
-                        :
-                        <Comercial stateMenu={openMenu} switchMenu={setOpenMenu} theme={theme} />
-                    }
-                </main>
+        <main className="home-main w-full flex items-stretch relative overflow-hidden">
+            <Sidebar stateMenu={openMenu} switchMenu={setOpenMenu} paramsSlug={params.slug} />
+            {params.slug === 'cliente' || params.slug === undefined ?
+                <Cliente stateMenu={openMenu} switchMenu={setOpenMenu} theme={theme} />
                 :
-                <Loading />
+                <Comercial stateMenu={openMenu} switchMenu={setOpenMenu} theme={theme} />
             }
-        </>
+        </main>
     )
 }
