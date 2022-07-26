@@ -5,7 +5,7 @@ interface ChartProps {
     theme: boolean;
 }
 
-export function Contratos({ theme }: ChartProps) {
+export function CustoRetorno({ theme }: ChartProps) {
 
     const options: ApexOptions = {
         theme: {
@@ -48,16 +48,12 @@ export function Contratos({ theme }: ChartProps) {
 
     const series = [
         {
-            name: 'Propostas enviadas',
+            name: 'CAC',
             data: [44, 55, 41]
         },
         {
-            name: 'Contratos enviados',
+            name: 'ROI',
             data: [53, 32, 33]
-        },
-        {
-            name: 'Contratos assinados',
-            data: [13, 44, 32]
         }
     ]
 

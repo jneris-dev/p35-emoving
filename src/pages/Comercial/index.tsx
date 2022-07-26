@@ -4,9 +4,9 @@ import { Header } from "../../components/Header";
 import { Card } from "../../components/Card";
 import { Footer } from "../../components/Footer";
 
-import { Marketing } from "./charts/Marketing";
-import { Reunioes } from "./charts/Reunioes";
-import { Contratos } from "./charts/Contratos";
+import { Inbound } from "./charts/Inbound";
+import { Outbound } from "./charts/Outbound";
+import { CustoRetorno } from "./charts/CustoRetorno";
 
 interface ComercialProps {
     stateMenu: boolean;
@@ -51,16 +51,16 @@ export function Comercial(props: ComercialProps) {
 
                 <div className="flex lg:flex-row flex-col gap-5 items-stretch mb-10">
                     <Card width={["lg:w-1/2", "w-full"]}>
-                        <Marketing theme={props.theme} />
+                        <Inbound theme={props.theme} />
                     </Card>
                     <Card width={["lg:w-1/2", "w-full"]}>
-                        <Reunioes theme={props.theme} />
+                        <Outbound theme={props.theme} />
                     </Card>
                 </div>
 
                 <div className="flex lg:flex-row flex-col gap-5 items-stretch mb-10">
                     <Card width={["lg:w-1/2", "w-full"]}>
-                        <Contratos theme={props.theme} />
+                        <CustoRetorno theme={props.theme} />
                     </Card>
                     <Card width={["lg:w-1/2", "w-full", "invisible"]}>
 

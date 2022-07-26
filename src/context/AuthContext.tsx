@@ -68,7 +68,7 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
         return () => {
             unsubscribe();
         }
-    }, [isLogged])
+    }, [])
 
     function signIn() {
         const userData = database.find((user) => user.email === emailRef?.current?.value);

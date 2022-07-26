@@ -5,11 +5,12 @@ interface ChartProps {
     theme: boolean;
 }
 
-export function Marketing({ theme }: ChartProps) {
+export function Inbound({ theme }: ChartProps) {
 
     const options: ApexOptions = {
         theme: {
             mode: theme ? 'dark' : 'light',
+            palette: 'palette2'
         },
         chart: {
             height: 390,
@@ -37,8 +38,14 @@ export function Marketing({ theme }: ChartProps) {
                 }
             }
         },
-        colors: ['#1ab7ea', '#0084ff', '#39539E', '#0077B5'],
-        labels: ['CAC*', 'ROI*', 'Leads inbound', 'Leads outbound'],
+        labels: [
+            'Leads Inbound',
+            'Reuniões agendadas',
+            'Reuniões realizadas',
+            'Propostas enviadas',
+            'Contratos enviados',
+            'Contratos assinados'
+        ],
         legend: {
             show: true,
             floating: true,
@@ -50,7 +57,10 @@ export function Marketing({ theme }: ChartProps) {
             },
             itemMargin: {
                 vertical: 3
-            }
+            },
+            formatter: function (seriesName, opts) {
+                return seriesName + ":  " + opts.w.globals.series[opts.seriesIndex]
+            },
         },
         responsive: [{
             breakpoint: 480,
@@ -62,7 +72,7 @@ export function Marketing({ theme }: ChartProps) {
         }]
     };
 
-    const series = [76, 67, 61, 90]
+    const series = [76, 67, 61, 90, 41, 85]
 
     return (
         <ReactApexChart
