@@ -13,7 +13,7 @@ export function Router() {
 
             <Route path="/" element={
                 <>
-                    {isLogged ?
+                    {isLogged !== null ?
                         <Home />
                         :
                         <Navigate replace to="/login" />
@@ -22,7 +22,7 @@ export function Router() {
             } />
             <Route path="/login" element={
                 <>
-                    {!isLogged ?
+                    {isLogged === null ?
                         <Login />
                         :
                         <Navigate replace to="/" />
@@ -31,7 +31,7 @@ export function Router() {
             } />
             <Route path="/:slug" element={
                 <>
-                    {isLogged ?
+                    {isLogged !== null ?
                         <Home />
                         :
                         <Navigate replace to="/login" />

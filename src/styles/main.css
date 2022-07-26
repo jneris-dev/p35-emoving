@@ -11,6 +11,8 @@ main.home-main {
 }
 
 nav ul.menu-sidebar .active,
+nav ul.menu-sidebar li:not(:first-child):hover,
+nav ul.menu-sidebar li button:hover,
 nav ul.menu-sidebar li a:hover {
     @apply bg-zinc-100 text-zinc-900 dark:bg-zinc-700 dark:text-zinc-100;
 }

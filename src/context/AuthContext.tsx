@@ -68,7 +68,7 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
         return () => {
             unsubscribe();
         }
-    }, [])
+    }, [isLogged])
 
     function signIn() {
         const userData = database.find((user) => user.email === emailRef?.current?.value);
@@ -84,7 +84,7 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
                     token: userData.token,
                 })
                 localStorage.setItem('userToken', userData.token);
-                window.location.reload();
+                navigate('/')
             }
         } else {
             alert('invalid user e-mail')

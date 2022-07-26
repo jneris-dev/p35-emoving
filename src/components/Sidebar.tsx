@@ -78,7 +78,7 @@ export function Sidebar(props: SidebarProps) {
                                         to="/cliente"
                                         className={`
                                             w-full flex gap-2 cursor-pointer flex-row p-3 rounded-sm items-center
-                                            ${props.paramsSlug === 'cliente' || props.paramsSlug === undefined && 'active'}
+                                            ${props.paramsSlug === 'cliente' && 'active'}
                                         `}
                                     >
                                         <ArrowRight size={12} weight="regular" />
@@ -105,25 +105,25 @@ export function Sidebar(props: SidebarProps) {
                                 </li>
                             </ul>
                         </li>
-                        <li className="flex gap-2 cursor-pointer flex-row p-3 rounded-sm hover:bg-zinc-100 hover:text-zinc-900">
+                        <li className="flex gap-2 cursor-pointer flex-row p-3 rounded-sm">
                             <Users size={24} weight="fill" className="text-main-500 dark:text-main-200" />
                             <span>
                                 Clientes
                             </span>
                         </li>
-                        <li className="flex gap-2 cursor-pointer flex-row p-3 rounded-sm hover:bg-zinc-100 hover:text-zinc-900">
+                        <li className="flex gap-2 cursor-pointer flex-row p-3 rounded-sm">
                             <ChartLine size={24} weight="fill" className="text-main-500 dark:text-main-200" />
                             <span>
                                 Relatórios
                             </span>
                         </li>
-                        <li className="flex gap-2 cursor-pointer flex-row p-3 rounded-sm hover:bg-zinc-100 hover:text-zinc-900">
+                        <li className="flex gap-2 cursor-pointer flex-row p-3 rounded-sm">
                             <Gear size={24} weight="fill" className="text-main-500 dark:text-main-200" />
                             <span>
                                 Configurações
                             </span>
                         </li>
-                        <li className="flex gap-2 cursor-pointer flex-row p-3 rounded-sm hover:bg-zinc-100 hover:text-zinc-900">
+                        <li className="flex gap-2 cursor-pointer flex-row p-3 rounded-sm">
                             <Lifebuoy size={24} weight="fill" className="text-main-500 dark:text-main-200" />
                             <span>
                                 Suporte
@@ -131,7 +131,7 @@ export function Sidebar(props: SidebarProps) {
                         </li>
                         <li
                             onClick={() => logOut()}
-                            className="flex gap-2 cursor-pointer flex-row p-3 rounded-sm hover:bg-zinc-100 hover:text-zinc-900"
+                            className="flex gap-2 cursor-pointer flex-row p-3 rounded-sm"
                         >
                             <SignOut size={24} weight="fill" className="text-main-500 dark:text-main-200" />
                             <span>

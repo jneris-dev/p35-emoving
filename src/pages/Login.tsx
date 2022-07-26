@@ -37,7 +37,10 @@ export function Login() {
                             name="email"
                             id="email"
                             placeholder="E-mail"
-                            className="px-5 h-14 rounded w-full border-gray-300 shadow-sm focus:border-main-200 focus:ring focus:ring-main-200 focus:ring-opacity-50"
+                            className="
+                            px-5 h-14 rounded w-full border-gray-300 shadow-sm focus:border-main-200 focus:ring focus:ring-main-200 focus:ring-opacity-50
+                            dark:bg-zinc-900 dark:focus:bg-zinc-800 dark:active:bg-zinc-700
+                            "
                         />
                         <div className="relative flex items-center">
                             <input
