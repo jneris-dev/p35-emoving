@@ -13,6 +13,7 @@ export function Reunioes({ theme }: ChartProps) {
         },
         chart: {
             type: 'pie',
+            background: 'transparent'
         },
         legend: {
             position: 'bottom'

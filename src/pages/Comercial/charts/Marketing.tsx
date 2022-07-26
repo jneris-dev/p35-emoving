@@ -14,6 +14,7 @@ export function Marketing({ theme }: ChartProps) {
         chart: {
             height: 390,
             type: 'radialBar',
+            background: 'transparent'
         },
         plotOptions: {
             radialBar: {

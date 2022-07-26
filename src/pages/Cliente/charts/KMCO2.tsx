@@ -15,6 +15,7 @@ export function KMCO2({ theme }: ChartProps) {
             height: 350,
             type: 'line',
             stacked: false,
+            background: 'transparent'
         },
         stroke: {
             width: [0, 2, 5],

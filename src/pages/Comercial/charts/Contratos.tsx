@@ -13,7 +13,8 @@ export function Contratos({ theme }: ChartProps) {
         },
         chart: {
             type: 'bar',
-            height: 430
+            height: 430,
+            background: 'transparent'
         },
         plotOptions: {
             bar: {

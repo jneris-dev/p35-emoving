@@ -10,7 +10,7 @@ export function Login() {
     async function handleLogin(e: FormEvent) {
         e.preventDefault();
 
-        if (!isLogged) {
+        if (isLogged === null) {
             signIn();
         }
     }

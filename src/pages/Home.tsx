@@ -30,8 +30,6 @@ export function Home() {
         }
     }, []);
 
-    console.log(user)
-
     return (
         <main className="home-main w-full flex items-stretch relative overflow-hidden">
             <Sidebar stateMenu={openMenu} switchMenu={setOpenMenu} paramsSlug={params.slug} />

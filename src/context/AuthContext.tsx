@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const database = [
     {
@@ -44,6 +45,7 @@ export const AuthContext = createContext({} as AuthContextType);
 
 export function AuthContextProvider(props: AuthContextProviderProps) {
     const [user, setUser] = useState<User>();
+    const navigate = useNavigate();
 
     const emailRef = useRef<HTMLInputElement>(null);
     const passRef = useRef<HTMLInputElement>(null);
@@ -54,17 +56,18 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
         function unsubscribe() {
             const userLoggedData = database.find((user) => user.token === isLogged);
 
-            setUser({
-                username: userLoggedData?.username,
-                email: userLoggedData?.email,
-                token: userLoggedData?.token
-            })
+            if (isLogged !== null) {
+                setUser({
+                    username: userLoggedData?.username,
+                    email: userLoggedData?.email,
+                    token: userLoggedData?.token
+                })
+            }
         }
 
         return () => {
             unsubscribe();
         }
-
     }, [])
 
     function signIn() {
@@ -81,6 +84,7 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
                     token: userData.token,
                 })
                 localStorage.setItem('userToken', userData.token);
+                window.location.reload();
             }
         } else {
             alert('invalid user e-mail')

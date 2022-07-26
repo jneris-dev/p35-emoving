@@ -14,6 +14,7 @@ export function Manutencoes({ theme }: ChartProps) {
         chart: {
             height: 350,
             type: 'line',
+            background: 'transparent'
         },
         stroke: {
             width: [0, 4]
