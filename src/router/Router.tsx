@@ -5,7 +5,7 @@ import { Home } from "../pages/Home";
 import { useAuth } from "../hooks/useAuth";
 
 export function Router() {
-    const { isLogged } = useAuth();
+    const { tokenLoggedUser } = useAuth();
 
     return (
         <Routes>
@@ -13,7 +13,7 @@ export function Router() {
 
             <Route path="/" element={
                 <>
-                    {isLogged !== null ?
+                    {tokenLoggedUser !== null ?
                         <Home />
                         :
                         <Navigate replace to="/login" />
@@ -22,7 +22,7 @@ export function Router() {
             } />
             <Route path="/login" element={
                 <>
-                    {isLogged === null ?
+                    {tokenLoggedUser === null ?
                         <Login />
                         :
                         <Navigate replace to="/" />
@@ -31,7 +31,7 @@ export function Router() {
             } />
             <Route path="/:slug" element={
                 <>
-                    {isLogged !== null ?
+                    {tokenLoggedUser !== null ?
                         <Home />
                         :
                         <Navigate replace to="/login" />

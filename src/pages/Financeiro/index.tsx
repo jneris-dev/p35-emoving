@@ -3,18 +3,16 @@ import { useAuth } from "../../hooks/useAuth";
 import { Header } from "../../components/Header";
 import { Card } from "../../components/Card";
 import { Footer } from "../../components/Footer";
+import { Numeric } from "../../components/Numeric";
+import { Ticket } from "./charts/Ticket";
 
-import { Inbound } from "./charts/Inbound";
-import { Outbound } from "./charts/Outbound";
-import { CustoRetorno } from "./charts/CustoRetorno";
-
-interface ComercialProps {
+interface FinanceiroProps {
     stateMenu: boolean;
     switchMenu: (value: boolean) => void;
     theme: boolean;
 }
 
-export function Comercial(props: ComercialProps) {
+export function Financeiro(props: FinanceiroProps) {
     const { userLogged } = useAuth();
     const user = JSON.parse(userLogged!);
 
@@ -43,28 +41,43 @@ export function Comercial(props: ComercialProps) {
                             </span>
                             <li>
                                 <span className="text-sm font-medium text-zinc-100">
-                                    Comercial
+                                    Financeiro
                                 </span>
                             </li>
                         </ol>
                     </nav>
                 </div>
 
-                <div className="flex lg:flex-row flex-col gap-5 items-stretch mb-10">
-                    <Card width={["lg:w-1/2", "w-full"]}>
-                        <Inbound theme={props.theme} />
+                <div className="flex md:flex-row flex-col gap-5 items-stretch mb-10 justify-center">
+                    <Card width={["flex-1", "w-full"]}>
+                        <Numeric
+                            label="Margem de Lucro Líquido"
+                            data="R$235.654,21"
+                            rate="+15.8%"
+                            description="Status financeiro da empresa"
+                            arrow="up"
+                            color="green"
+                        />
                     </Card>
-                    <Card width={["lg:w-1/2", "w-full"]}>
-                        <Outbound theme={props.theme} />
+                    <Card width={["flex-1", "w-full"]}>
+                        <Numeric
+                            label="Margem de Lucro Bruto"
+                            data="R$354.215,63"
+                            rate="+18.85%"
+                            description="Status financeiro da empresa"
+                            arrow="up"
+                            color="green"
+                        />
                     </Card>
                 </div>
 
                 <div className="flex lg:flex-row flex-col gap-5 items-stretch mb-10">
-                    <Card width={["lg:w-1/2", "w-full"]}>
-                        <CustoRetorno theme={props.theme} />
-                    </Card>
-                    <Card width={["lg:w-1/2", "w-full", "invisible"]}>
-
+                    <Card
+                        width={["w-full"]}
+                        label="Ticket Médio"
+                        description="Ticket médio por cliente/patrimônio/região/etc."
+                    >
+                        <Ticket theme={props.theme} />
                     </Card>
                 </div>
 

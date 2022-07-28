@@ -16,7 +16,8 @@ interface ClienteProps {
 }
 
 export function Cliente(props: ClienteProps) {
-    const { user } = useAuth();
+    const { userLogged } = useAuth();
+    const user = JSON.parse(userLogged!);
 
     return (
         <div className={`flex flex-col min-h-screen w-full min-w-0 relative`}>
@@ -28,7 +29,7 @@ export function Cliente(props: ClienteProps) {
             <section className="flex-1 mt-12 lg:px-6 px-3">
                 <div className="mb-12 relative text-white">
                     <h1 className="text-3xl font-medium">
-                        Welcome back, {user?.username || "Usuário"}!
+                        Welcome back, {user[0] || "Usuário"}!
                     </h1>
 
                     <nav className="flex mt-3" aria-label="Breadcrumb">
@@ -57,7 +58,8 @@ export function Cliente(props: ClienteProps) {
                             data="10min"
                             rate="-2.5%"
                             description="Tempo respondemos o chamado"
-                            status="down"
+                            arrow="down"
+                            color="green"
                         />
                     </Card>
                     <Card width={["flex-1", "w-full"]}>
@@ -66,7 +68,8 @@ export function Cliente(props: ClienteProps) {
                             data="25min"
                             rate="+3.85%"
                             description="Tempo resolvemos o problema do chamado (ou fechamos)"
-                            status="up"
+                            arrow="up"
+                            color="red"
                         />
                     </Card>
                 </div>

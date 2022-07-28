@@ -4,13 +4,13 @@ import { Eye, EyeClosed } from "phosphor-react";
 import { useAuth } from "../hooks/useAuth";
 
 export function Login() {
-    const { signIn, emailRef, passRef, isLogged } = useAuth();
+    const { signIn, emailRef, passRef, tokenLoggedUser } = useAuth();
     const [showPassword, setShowPassword] = useState(false);
 
     async function handleLogin(e: FormEvent) {
         e.preventDefault();
 
-        if (isLogged === null) {
+        if (tokenLoggedUser === null) {
             signIn();
         }
     }

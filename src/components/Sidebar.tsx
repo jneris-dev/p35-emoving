@@ -14,13 +14,14 @@ interface SidebarProps {
 }
 
 export function Sidebar(props: SidebarProps) {
-    const { user } = useAuth();
+    const { userLogged } = useAuth();
+    const user = JSON.parse(userLogged!);
 
     const [openDropdown, setOpenDropdown] = useState(false);
-    const convertEmailUser = Md5.init(user?.email || 'user@email.com');
+    const convertEmailUser = Md5.init(user[1] || 'user@email.com');
 
     function logOut() {
-        localStorage.removeItem("userToken");
+        sessionStorage.removeItem("tokenLoggedUser");
 
         window.location.reload();
     }
@@ -48,8 +49,8 @@ export function Sidebar(props: SidebarProps) {
                                 alt=""
                             />
                         }
-                        <p className="font-bold dark:text-main-200">{user?.username || "Usuário"}</p>
-                        <small className="text-zinc-500 dark:text-zinc-300">{user?.email || "user@email.com"}</small>
+                        <p className="font-bold dark:text-main-200">{user[0] || "Usuário"}</p>
+                        <small className="text-zinc-500 dark:text-zinc-300">{user[1] || "user@email.com"}</small>
                     </div>
                     <ul className="flex flex-col py-5 px-3 gap-y-4 text-zinc-600 dark:text-zinc-300 menu-sidebar">
                         <li className="w-full">
@@ -98,7 +99,13 @@ export function Sidebar(props: SidebarProps) {
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link to="" className="w-full flex gap-2 cursor-pointer flex-row p-3 rounded-sm items-center">
+                                    <Link
+                                        to="/financeiro"
+                                        className={`
+                                            w-full flex gap-2 cursor-pointer flex-row p-3 rounded-sm items-center
+                                            ${props.paramsSlug === 'financeiro' && 'active'}
+                                        `}
+                                    >
                                         <ArrowRight size={12} weight="regular" />
                                         Financeiro
                                     </Link>

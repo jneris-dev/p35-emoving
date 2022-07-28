@@ -34,7 +34,8 @@ type AuthContextType = {
     signIn: () => void;
     emailRef: any;
     passRef: any;
-    isLogged: string | null;
+    userLogged: string | null;
+    tokenLoggedUser: string | null;
 }
 
 type AuthContextProviderProps = {
@@ -50,13 +51,14 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
     const emailRef = useRef<HTMLInputElement>(null);
     const passRef = useRef<HTMLInputElement>(null);
 
-    const isLogged = localStorage.getItem("userToken");
+    const userLogged = localStorage.getItem("userLogged");
+    const tokenLoggedUser = sessionStorage.getItem("tokenLoggedUser");
 
     useEffect(() => {
         function unsubscribe() {
-            const userLoggedData = database.find((user) => user.token === isLogged);
+            const userLoggedData = database.find((user) => user.token === tokenLoggedUser);
 
-            if (isLogged !== null) {
+            if (userLogged !== null) {
                 setUser({
                     username: userLoggedData?.username,
                     email: userLoggedData?.email,
@@ -80,10 +82,10 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
                 setUser({
                     username: userData.username,
                     email: userData.email,
-                    password: userData.password,
                     token: userData.token,
                 })
-                localStorage.setItem('userToken', userData.token);
+                localStorage.setItem('userLogged', JSON.stringify([userData.username, userData.email]));
+                sessionStorage.setItem("tokenLoggedUser", userData.token);
                 navigate('/')
             }
         } else {
@@ -92,7 +94,7 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
     };
 
     return (
-        <AuthContext.Provider value={{ user, signIn, emailRef, passRef, isLogged }}>
+        <AuthContext.Provider value={{ user, signIn, emailRef, passRef, userLogged, tokenLoggedUser }}>
             {props.children}
         </AuthContext.Provider>
     );

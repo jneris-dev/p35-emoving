@@ -5,7 +5,8 @@ interface Props {
     data: string;
     rate: string;
     description: string;
-    status: string;
+    arrow: string;
+    color: 'green' | 'red';
 }
 
 export function Numeric(props: Props) {
@@ -14,8 +15,8 @@ export function Numeric(props: Props) {
             <label className="text-2x font-medium">
                 {props.label}
             </label>
-            <strong className={`text-5xl font-medium flex flex-row gap-2 items-center ${props.status === 'down' ? 'text-teal-600' : 'text-red-500'}`}>
-                {props.status === 'up' ?
+            <strong className={`text-5xl font-medium flex flex-row gap-2 items-center ${props.color === 'green' ? 'text-teal-600' : 'text-red-500'}`}>
+                {props.arrow === 'up' ?
                     <TrendUp size={28} weight="light" />
                     :
                     <TrendDown size={28} weight="light" />
@@ -23,7 +24,7 @@ export function Numeric(props: Props) {
                 {props.data}
             </strong>
             <small className="font-medium text-zinc-500 dark:tex-zinc-300">
-                <span className={`${props.status === 'down' ? 'text-teal-600' : 'text-red-500'}`}>
+                <span className={`${props.color === 'green' ? 'text-teal-600' : 'text-red-500'}`}>
                     {props.rate}
                 </span> {props.description}
             </small>

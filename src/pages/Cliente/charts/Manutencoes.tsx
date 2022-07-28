@@ -12,7 +12,6 @@ export function Manutencoes({ theme }: ChartProps) {
             mode: theme ? 'dark' : 'light',
         },
         chart: {
-            height: 350,
             type: 'line',
             background: 'transparent'
         },
